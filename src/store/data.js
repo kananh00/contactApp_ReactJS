@@ -79,7 +79,8 @@ export const selectSingleContactByID = (state, ID) =>
               phone: payload.contactPhone,
               email: payload.contactEmail,
               adress: payload.contactAdress,
-              birthday: payload.contactBirthday
+              birthday: payload.contactBirthday,
+              date: payload.creationDate
             },
           ],
         };

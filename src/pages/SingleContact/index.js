@@ -3,15 +3,21 @@ import styled from 'styled-components';
 import { connect } from "react-redux";
 import { MdDeleteForever, MdModeEdit } from "react-icons/md";
 
-import { getContacts } from "../../store/data";
+import { getContacts, deleteContact } from "../../store/data";
 
 const mapStateToProps = (state) => ({
     allContacts: getContacts(state),
   });
   
-  export const SingleContact = connect(mapStateToProps)(
-      ({ allContacts, history: { push }, match: { params: { id } }}) => {
+  export const SingleContact = connect(mapStateToProps, {deleteContact})(
+      ({ allContacts, deleteContact, history: { push }, match: { params: { id } }}) => {
         const contact = allContacts.find(item => item.id == id);
+        const onListDeleteHandler = (contactID) => { 
+            deleteContact({
+              contactID,
+            });
+          }
+
         return (
          <Container>
               {contact && (
@@ -25,7 +31,8 @@ const mapStateToProps = (state) => ({
                     <p className="contact_adress">Adress: {contact.adress}</p>
                     <p className="contact_birthday">Birthday: {contact.birthday}</p>
                     <StyledButtons><MdModeEdit className = "btn_icons"/></StyledButtons>
-                    <StyledButtons><MdDeleteForever className = "btn_icons"/></StyledButtons>
+                    <StyledButtons onClick = {function(event){onListDeleteHandler(contact.id);  push('/');}}><MdDeleteForever className = "btn_icons"/></StyledButtons>
+                    <p>Created: {new Date(contact.date).toUTCString()}</p>
                 </StyledSingleContact>
             )}
             

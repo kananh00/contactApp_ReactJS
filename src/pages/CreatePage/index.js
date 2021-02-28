@@ -11,6 +11,7 @@ const createFormInitialFieldState = {
     contactPhone: "",
     contactEmail: "",
     contactBirthday: "",
+    creationDate: Date.now()
   };
   
   export const CreatePage = connect(null, { addContact })(

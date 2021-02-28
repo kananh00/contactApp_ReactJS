@@ -27,7 +27,7 @@ export const ContactPage = connect(mapStateToProps, {deleteContact})(
                 name={item.name}
                 surname={item.surname}
                 id={item.id}
-                // onClick = {deleteContact(item.contactID)}
+                onDeleteClick = {() => onListDeleteHandler(item.id)}
             />
         ))}
     </div>
