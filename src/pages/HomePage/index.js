@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { getContacts } from "../../store/data";
 import { Contacts } from './Contacts';
 
-const mapStateToProps = (state, { route }) => ({
+const mapStateToProps = (state) => ({
   allContacts: getContacts(state),
 });
 
@@ -19,6 +19,7 @@ export const ContactPage = connect(mapStateToProps)(
             <Contacts
                 name={item.name}
                 surname={item.surname}
+                id={item.id}
             />
         ))}
     </div>

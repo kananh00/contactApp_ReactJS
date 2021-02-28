@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {Header} from './commons';
 import {ContactPage} from './pages/HomePage/index'
+import {SingleContact} from './pages/SingleContact/index'
 import { Provider } from "react-redux";
 import store from "./store";
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Header/>
         <Switch>
           <Route exact path = "/" component = {ContactPage} />
+          <Route exact path = "/singlecontact/:id" component = {SingleContact} />
         </Switch>
       </Router>
     </Provider>
