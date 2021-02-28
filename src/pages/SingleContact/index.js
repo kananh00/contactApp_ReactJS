@@ -20,10 +20,10 @@ const mapStateToProps = (state) => ({
                         <h1>{contact.name.charAt(0)}{contact.surname.charAt(0)}</h1>
                     </StyledAvatar>
                     <h3 className = "contact_fullName">{contact.name} {contact.surname}</h3>
-                    <p className = "contact_phone">{contact.phone}</p>
-                    <p className="contact_email">{contact.email}</p>
-                    <p className="contact_adress">{contact.adress}</p>
-                    <p className="contact_birthday">{contact.birthday}</p>
+                    <p className = "contact_phone">Phone: {contact.phone}</p>
+                    <p className="contact_email">Email: {contact.email}</p>
+                    <p className="contact_adress">Adress: {contact.adress}</p>
+                    <p className="contact_birthday">Birthday: {contact.birthday}</p>
                     <StyledButtons><MdModeEdit className = "btn_icons"/></StyledButtons>
                     <StyledButtons><MdDeleteForever className = "btn_icons"/></StyledButtons>
                 </StyledSingleContact>

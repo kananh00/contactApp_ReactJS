@@ -1,6 +1,7 @@
 import { createID } from "../utils/createID";
 
 const ADD_CONTACT = "ADD_CONTACT";
+const DELETE_CONTACT = "DELETE_CONTACT";
 
 const MODULE_NAME = "data";
 export const getContacts = (state) => state[MODULE_NAME].contacts;
@@ -82,6 +83,14 @@ export const selectSingleContactByID = (state, ID) =>
             },
           ],
         };
+      case DELETE_CONTACT:
+        return {
+          ...state,
+          contacts: state.contacts.filter(
+            (contact) => contact.id !== payload.contactID
+          ),
+      };
+
       default:
         return state;
     }
@@ -89,5 +98,9 @@ export const selectSingleContactByID = (state, ID) =>
   
   export const addContact = (payload) => ({
     type: ADD_CONTACT,
+    payload,
+  });
+  export const deleteContact = (payload) => ({
+    type: DELETE_CONTACT,
     payload,
   });
