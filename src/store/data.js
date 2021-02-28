@@ -2,6 +2,7 @@ import { createID } from "../utils/createID";
 
 const ADD_CONTACT = "ADD_CONTACT";
 const DELETE_CONTACT = "DELETE_CONTACT";
+const EDIT_CONTACT = "EDIT_CONTACT";
 
 const MODULE_NAME = "data";
 export const getContacts = (state) => state[MODULE_NAME].contacts;
@@ -91,7 +92,24 @@ export const selectSingleContactByID = (state, ID) =>
             (contact) => contact.id !== payload.contactID
           ),
       };
-
+      case EDIT_CONTACT:
+      return {
+        ...state,
+        contacts: state.contacts.map((contact) => {
+          if (contact.id === payload.contactID) {
+            return {
+              ...contact,
+              name: payload.contact?.name,
+              surname: payload.contact?.surname,
+              phone: payload.contact?.phone,
+              email: payload.contact?.email,
+              adress: payload.contact?.adress,
+              birthday: payload.contact?.birthday
+            };
+          }
+          return contact;
+        }),
+      };
       default:
         return state;
     }
@@ -103,5 +121,9 @@ export const selectSingleContactByID = (state, ID) =>
   });
   export const deleteContact = (payload) => ({
     type: DELETE_CONTACT,
+    payload,
+  });
+  export const editContact = (payload) => ({
+    type: EDIT_CONTACT,
     payload,
   });

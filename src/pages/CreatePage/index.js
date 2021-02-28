@@ -10,6 +10,7 @@ const createFormInitialFieldState = {
     contactSurname: "",
     contactPhone: "",
     contactEmail: "",
+    contactAdress: "",
     contactBirthday: "",
     creationDate: Date.now()
   };
@@ -55,6 +56,8 @@ const createFormInitialFieldState = {
             <Input type = "text" name = "contactPhone" placeholder = "Phone number" value = {fields.contactPhone}  onChange = {onChange}/>
             <p>E-mail</p>
             <Input type = "text" name = "contactEmail" placeholder = "E-mail" value = {fields.contactEmail}  onChange = {onChange}/>
+            <p>Adress</p>
+            <Input type = "text" name = "contactAdress" placeholder = "Adress" value = {fields.contactAdress}  onChange = {onChange}/>
             <p>Birthday</p>
             <Input type = "text" name = "contactBirthday" placeholder = "Birthday" value = {fields.contactBirthday}  onChange = {onChange}/>
             <CreateBtn onClick={submitHandler}>Add to Contacts</CreateBtn> 
